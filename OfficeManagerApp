@@ -1,0 +1,25 @@
+
+public class OfficeManagerApp {
+
+	public static void main(String[] args) {
+		Person p = new Person();
+		p.setImya("Piter");
+		p.setPrizvyshe("Petrikovych");
+		p.setProfesiya("Tekhnologist");
+		p.setVik(35);
+		p.setZrist(1.75);
+		System.out.println(p.getFullName());
+		System.out.println(p.getFullInfo());
+		
+		Person m = new Person();
+		m.setImya("Maryna");
+		m.setPrizvyshe("Viktoryvna");
+		m.setProfesiya("Farmasy");
+		m.setVik(33);
+		m.setZrist(1.61);
+		
+		System.out.println(m.getFullInfo());
+
+	}
+
+}
