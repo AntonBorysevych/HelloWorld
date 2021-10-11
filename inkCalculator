@@ -1,0 +1,753 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import com.jgoodies.forms.factories.DefaultComponentFactory;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.DropMode;
+import javax.swing.ImageIcon;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.text.DecimalFormat;
+
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.SpinnerListModel;
+
+public class InkCalculator {
+
+	private JFrame frame;
+	private JTextField txtLength;
+	private JTextField txtWidth;
+	private JTextField txtNaklad;
+	private JTextField txtColor1;
+	private JTextField txtInkVolume1;
+	private JTextField txtColor2;
+	private JTextField txtColor3;
+	private JTextField txtColor4;
+	private JTextField txtColor5;
+	private JTextField txtColor6;
+	private JTextField txtColor7;
+	private JTextField txtColor8;
+	private JTextField txtInkVolume2;
+	private JTextField txtInkVolume3;
+	private JTextField txtInkVolume4;
+	private JTextField txtInkVolume5;
+	private JTextField txtInkVolume6;
+	private JTextField txtInkVolume7;
+	private JTextField txtInkVolume8;
+	private JSpinner spnPrintFild2;
+	private JSpinner spnPrintFild3;
+	private JSpinner spnPrintFild4;
+	private JSpinner spnPrintFild5;
+	private JSpinner spnPrintFild6;
+	private JSpinner spnPrintFild7;
+	private JSpinner spnPrintFild8;
+	private JSpinner spnInkLayer8;
+	
+	DecimalFormat df = new DecimalFormat("#####.###");
+	
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					InkCalculator window = new InkCalculator();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+					
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public InkCalculator() {
+		initialize();
+		
+		JOptionPane.showMessageDialog(null,"Програма розроблена для рекомендаційного ознайомлення. "
+				+ "Вбираючі властивості матеріалу та наявність зволожуючого \n"
+				+ "розчину на друкарській машині можуть впливати на різницю витрат фарби від лабораторних.");
+		
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(450, 100, 500, 555);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("\u041C\u0456\u0445\u0430\u0435\u043B\u044C \u0425\u0443\u0431\u0435\u0440 \u0423\u043A\u0440\u0430\u0457\u043D\u0430");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("HelveticaNeueCyr", Font.BOLD, 14));
+		lblNewLabel.setBounds(10, 25, 444, 14);
+		frame.getContentPane().add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("\u041A\u0430\u043B\u044C\u043A\u0443\u043B\u044F\u0442\u043E\u0440 \u0434\u043B\u044F \u0432\u0438\u0437\u043D\u0430\u0447\u0435\u043D\u043D\u044F \u0432\u0438\u0442\u0440\u0430\u0442\u0438 \u0444\u0430\u0440\u0431");
+		lblNewLabel_1.setFont(new Font("HelveticaNeueCyr", Font.BOLD, 12));
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setBounds(10, 38, 444, 14);
+		frame.getContentPane().add(lblNewLabel_1);
+		
+		txtLength = new JTextField();
+		txtLength.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				txtLength.selectAll();
+			}
+		});
+		txtLength.setText("500");
+		txtLength.setToolTipText("\u0442\u0456\u043B\u044C\u043A\u0438 \u0446\u0438\u0444\u0440\u0438");
+		txtLength.setHorizontalAlignment(SwingConstants.CENTER);
+		txtLength.setBounds(30, 100, 86, 20);
+		frame.getContentPane().add(txtLength);
+		txtLength.setColumns(10);
+		txtLength.selectAll();
+		
+		
+		txtWidth = new JTextField();
+		txtWidth.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtWidth.selectAll();
+			}
+		});
+		txtWidth.setText("700");
+		txtWidth.setToolTipText("\u0422\u0456\u043B\u044C\u043A\u0438 \u0446\u0438\u0444\u0440\u0438");
+		txtWidth.setHorizontalAlignment(SwingConstants.CENTER);
+		txtWidth.setBounds(170, 100, 86, 20);
+		frame.getContentPane().add(txtWidth);
+		txtWidth.setColumns(10);
+		txtWidth.selectAll();
+		
+		txtNaklad = new JTextField();
+		txtNaklad.setText("0");
+		txtNaklad.setToolTipText("\u041A\u0456\u043B\u044C\u043A\u0456\u0441\u0442\u044C "
+				+ "\u0432\u0456\u0434\u0431\u0438\u0442\u043A\u0456\u0432 \u0437 \u043F\u0440\u0438\u043B\u0430\u0434\u043A\u043E\u044E");
+		txtNaklad.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtNaklad.selectAll();
+			}
+		});
+		txtNaklad.setHorizontalAlignment(SwingConstants.CENTER);
+		txtNaklad.setBounds(301, 100, 107, 20);
+		frame.getContentPane().add(txtNaklad);
+		txtNaklad.setColumns(10);
+		txtNaklad.selectAll();
+		
+		JLabel lblNewLabel_2 = new JLabel("\u0414\u043E\u0432\u0436\u0438\u043D\u0430 \u043C\u043C");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setBounds(30, 85, 86, 14);
+		frame.getContentPane().add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("\u0428\u0438\u0440\u0438\u043D\u0430 \u043C\u043C");
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3.setBounds(170, 85, 86, 14);
+		frame.getContentPane().add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("\u0424\u043E\u0440\u043C\u0430\u0442");
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_4.setBounds(109, 63, 67, 14);
+		frame.getContentPane().add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_5 = new JLabel("X");
+		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblNewLabel_5.setBounds(120, 103, 46, 14);
+		frame.getContentPane().add(lblNewLabel_5);
+		
+		JLabel lblNewLabel_6 = new JLabel("\u041D\u0430\u043A\u043B\u0430\u0434");
+		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_6.setBounds(301, 85, 107, 14);
+		frame.getContentPane().add(lblNewLabel_6);
+		
+		JLabel lblNewLabel_7 = new JLabel("\u0412\u0456\u0434\u0431\u0438\u0442\u043A\u0456\u0432");
+		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_7.setBounds(418, 103, 56, 14);
+		frame.getContentPane().add(lblNewLabel_7);
+		
+		
+		
+		JLabel lblNewLabel_8 = new JLabel("\u041A\u043E\u043B\u0456\u0440");
+		lblNewLabel_8.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_8.setBounds(30, 137, 86, 14);
+		frame.getContentPane().add(lblNewLabel_8);
+		
+		JLabel lblNewLabel_9 = new JLabel("\u041D\u0430\u043A\u0430\u0442 \u0444\u0430\u0440\u0431\u0438");
+		lblNewLabel_9.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_9.setBounds(130, 137, 97, 14);
+		frame.getContentPane().add(lblNewLabel_9);
+		
+		JLabel lblNewLabel_10 = new JLabel("\u0412\u0456\u0434\u0441\u043E\u0442\u043E\u043A \u0434\u0440\u0443\u043A\u0443");
+		lblNewLabel_10.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_10.setBounds(223, 137, 109, 14);
+		frame.getContentPane().add(lblNewLabel_10);
+		
+		JLabel lblNewLabel_11 = new JLabel("\u041A\u0456\u043B\u044C\u043A\u0456\u0441\u0442\u044C \u0424\u0430\u0440\u0431\u0438");
+		lblNewLabel_11.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_11.setBounds(355, 137, 109, 14);
+		frame.getContentPane().add(lblNewLabel_11);
+		
+		
+		txtColor1 = new JTextField();
+		txtColor1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtColor1.selectAll();
+			}
+		});
+		txtColor1.setToolTipText("\u041D\u0430\u0437\u0432\u0430 \u043A\u043E\u043B\u044C\u043E\u0440\u0443");
+		txtColor1.setText("\u041A\u043E\u043B\u0456\u0440 1");
+		txtColor1.setHorizontalAlignment(SwingConstants.CENTER);
+		txtColor1.setBounds(30, 162, 86, 20);
+		frame.getContentPane().add(txtColor1);
+		txtColor1.setColumns(10);
+		txtColor1.selectAll();
+		
+		txtColor2 = new JTextField();
+		txtColor2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtColor2.selectAll();
+			}
+		});
+		txtColor2.setToolTipText("\u041D\u0430\u0437\u0432\u0430 \u043A\u043E\u043B\u044C\u043E\u0440\u0443");
+		txtColor2.setText("\u041A\u043E\u043B\u0456\u0440 2");
+		txtColor2.setHorizontalAlignment(SwingConstants.CENTER);
+		txtColor2.setColumns(10);
+		txtColor2.setBounds(30, 193, 86, 20);
+		frame.getContentPane().add(txtColor2);
+		txtColor2.selectAll();
+		
+		txtColor3 = new JTextField();
+		txtColor3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtColor3.selectAll();
+			}
+		});
+		txtColor3.setToolTipText("\u041D\u0430\u0437\u0432\u0430 \u043A\u043E\u043B\u044C\u043E\u0440\u0443");
+		txtColor3.setText("\u041A\u043E\u043B\u0456\u0440 3");
+		txtColor3.setHorizontalAlignment(SwingConstants.CENTER);
+		txtColor3.setColumns(10);
+		txtColor3.setBounds(30, 224, 86, 20);
+		frame.getContentPane().add(txtColor3);
+		txtColor3.selectAll();
+		
+		txtColor4 = new JTextField();
+		txtColor4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtColor4.selectAll();
+			}
+		});
+		txtColor4.setToolTipText("\u041D\u0430\u0437\u0432\u0430 \u043A\u043E\u043B\u044C\u043E\u0440\u0443");
+		txtColor4.setText("\u041A\u043E\u043B\u0456\u0440 4");
+		txtColor4.setHorizontalAlignment(SwingConstants.CENTER);
+		txtColor4.setColumns(10);
+		txtColor4.setBounds(30, 255, 86, 20);
+		frame.getContentPane().add(txtColor4);
+		txtColor4.selectAll();
+		
+		txtColor5 = new JTextField();
+		txtColor5.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtColor5.selectAll();
+			}
+		});
+		txtColor5.setToolTipText("\u041D\u0430\u0437\u0432\u0430 \u043A\u043E\u043B\u044C\u043E\u0440\u0443");
+		txtColor5.setText("\u041A\u043E\u043B\u0456\u0440 5");
+		txtColor5.setHorizontalAlignment(SwingConstants.CENTER);
+		txtColor5.setColumns(10);
+		txtColor5.setBounds(30, 286, 86, 20);
+		frame.getContentPane().add(txtColor5);
+		txtColor5.selectAll();
+		
+		txtColor6 = new JTextField();
+		txtColor6.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtColor6.selectAll();
+			}
+		});
+		txtColor6.setHorizontalAlignment(SwingConstants.CENTER);
+		txtColor6.setToolTipText("\u041D\u0430\u0437\u0432\u0430 \u043A\u043E\u043B\u044C\u043E\u0440\u0443");
+		txtColor6.setText("\u041A\u043E\u043B\u0456\u0440 6");
+		txtColor6.setColumns(10);
+		txtColor6.setBounds(30, 317, 86, 20);
+		frame.getContentPane().add(txtColor6);
+		txtColor6.selectAll();
+		
+		txtColor7 = new JTextField();
+		txtColor7.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtColor7.selectAll();
+			}
+		});
+		txtColor7.setToolTipText("\u041D\u0430\u0437\u0432\u0430 \u043A\u043E\u043B\u044C\u043E\u0440\u0443");
+		txtColor7.setText("\u041A\u043E\u043B\u0456\u0440 7");
+		txtColor7.setHorizontalAlignment(SwingConstants.CENTER);
+		txtColor7.setColumns(10);
+		txtColor7.setBounds(30, 348, 86, 20);
+		frame.getContentPane().add(txtColor7);
+		txtColor7.selectAll();
+		
+		txtColor8 = new JTextField();
+		txtColor8.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtColor8.selectAll();
+			}
+		});
+		txtColor8.setHorizontalAlignment(SwingConstants.CENTER);
+		txtColor8.setToolTipText("\u041D\u0430\u0437\u0432\u0430 \u043A\u043E\u043B\u044C\u043E\u0440\u0443");
+		txtColor8.setText("\u041A\u043E\u043B\u0456\u0440 8");
+		txtColor8.setColumns(10);
+		txtColor8.setBounds(30, 379, 86, 20);
+		frame.getContentPane().add(txtColor8);
+		txtColor8.selectAll();
+		
+		// txtInkVolume - це кількість фарби в кілограмах. Початкове значення НУЛЬ.
+		
+		txtInkVolume1 = new JTextField();
+		txtInkVolume1.setToolTipText("\u0413\u0435\u043D\u0435\u0440\u0443\u0454\u0442\u044C\u0441\u044F \u0430\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u043D\u043E");
+		txtInkVolume1.setText("0");
+		txtInkVolume1.setHorizontalAlignment(SwingConstants.CENTER);
+		txtInkVolume1.setBounds(368, 162, 86, 20);
+		frame.getContentPane().add(txtInkVolume1);
+		txtInkVolume1.setColumns(10);
+		
+		
+		txtInkVolume2 = new JTextField();
+		txtInkVolume2.setToolTipText("\u0413\u0435\u043D\u0435\u0440\u0443\u0454\u0442\u044C\u0441\u044F \u0430\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u043D\u043E");
+		txtInkVolume2.setText("0");
+		txtInkVolume2.setHorizontalAlignment(SwingConstants.CENTER);
+		txtInkVolume2.setColumns(10);
+		txtInkVolume2.setBounds(368, 193, 86, 20);
+		frame.getContentPane().add(txtInkVolume2);
+		
+		txtInkVolume3 = new JTextField();
+		txtInkVolume3.setToolTipText("\u0413\u0435\u043D\u0435\u0440\u0443\u0454\u0442\u044C\u0441\u044F \u0430\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u043D\u043E");
+		txtInkVolume3.setText("0");
+		txtInkVolume3.setHorizontalAlignment(SwingConstants.CENTER);
+		txtInkVolume3.setColumns(10);
+		txtInkVolume3.setBounds(368, 224, 86, 20);
+		frame.getContentPane().add(txtInkVolume3);
+		
+		txtInkVolume4 = new JTextField();
+		txtInkVolume4.setToolTipText("\u0413\u0435\u043D\u0435\u0440\u0443\u0454\u0442\u044C\u0441\u044F \u0430\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u043D\u043E");
+		txtInkVolume4.setText("0");
+		txtInkVolume4.setHorizontalAlignment(SwingConstants.CENTER);
+		txtInkVolume4.setColumns(10);
+		txtInkVolume4.setBounds(368, 255, 86, 20);
+		frame.getContentPane().add(txtInkVolume4);
+		
+		txtInkVolume5 = new JTextField();
+		txtInkVolume5.setToolTipText("\u0413\u0435\u043D\u0435\u0440\u0443\u0454\u0442\u044C\u0441\u044F \u0430\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u043D\u043E");
+		txtInkVolume5.setText("0");
+		txtInkVolume5.setHorizontalAlignment(SwingConstants.CENTER);
+		txtInkVolume5.setColumns(10);
+		txtInkVolume5.setBounds(368, 286, 86, 20);
+		frame.getContentPane().add(txtInkVolume5);
+		
+		txtInkVolume6 = new JTextField();
+		txtInkVolume6.setToolTipText("\u0413\u0435\u043D\u0435\u0440\u0443\u0454\u0442\u044C\u0441\u044F \u0430\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u043D\u043E");
+		txtInkVolume6.setText("0");
+		txtInkVolume6.setHorizontalAlignment(SwingConstants.CENTER);
+		txtInkVolume6.setColumns(10);
+		txtInkVolume6.setBounds(368, 317, 86, 20);
+		frame.getContentPane().add(txtInkVolume6);
+		
+		txtInkVolume7 = new JTextField();
+		txtInkVolume7.setToolTipText("\u0413\u0435\u043D\u0435\u0440\u0443\u0454\u0442\u044C\u0441\u044F \u0430\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u043D\u043E");
+		txtInkVolume7.setText("0");
+		txtInkVolume7.setHorizontalAlignment(SwingConstants.CENTER);
+		txtInkVolume7.setColumns(10);
+		txtInkVolume7.setBounds(368, 348, 86, 20);
+		frame.getContentPane().add(txtInkVolume7);
+		
+		txtInkVolume8 = new JTextField();
+		txtInkVolume8.setToolTipText("\u0413\u0435\u043D\u0435\u0440\u0443\u0454\u0442\u044C\u0441\u044F \u0430\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u043D\u043E");
+		txtInkVolume8.setText("0");
+		txtInkVolume8.setHorizontalAlignment(SwingConstants.CENTER);
+		txtInkVolume8.setColumns(10);
+		txtInkVolume8.setBounds(368, 379, 86, 20);
+		frame.getContentPane().add(txtInkVolume8);
+		
+		
+		
+		// spnPrintFild - це спінер що вказує відсоток задруківки на пластині Мін 0% --- Макс 100.
+		JSpinner spnPrintFild1 = new JSpinner();
+		spnPrintFild1.setToolTipText("Відсоток задруківки на формі"
+				+ "(Зазвичай вказується при виводі пластини)");
+		spnPrintFild1.setModel(new SpinnerListModel(new String[] {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14",
+				"15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36",
+				"37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58",
+				"59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80",
+				"81", "82", "83", "84", "85", "86", "87", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100"}));
+		spnPrintFild1.setBounds(250, 162, 46, 20);
+		frame.getContentPane().add(spnPrintFild1);
+		
+		spnPrintFild2 = new JSpinner();
+		spnPrintFild2.setToolTipText("Відсоток задруківки на формі"
+				+ "(Зазвичай вказується при виводі пластини)");
+		spnPrintFild2.setModel(new SpinnerListModel(new String[] {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14",
+				"15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36",
+				"37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58",
+				"59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80",
+				"81", "82", "83", "84", "85", "86", "87", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100"}));
+		spnPrintFild2.setBounds(250, 193, 46, 20);
+		frame.getContentPane().add(spnPrintFild2);
+		
+		spnPrintFild3 = new JSpinner();
+		spnPrintFild3.setToolTipText("Відсоток задруківки на формі"
+				+ "(Зазвичай вказується при виводі пластини)");
+		spnPrintFild3.setModel(new SpinnerListModel(new String[] {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14",
+				"15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36",
+				"37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58",
+				"59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80",
+				"81", "82", "83", "84", "85", "86", "87", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100"}));
+		spnPrintFild3.setBounds(250, 224, 46, 20);
+		frame.getContentPane().add(spnPrintFild3);
+		
+		spnPrintFild4 = new JSpinner();
+		spnPrintFild4.setToolTipText("Відсоток задруківки на формі"
+				+ "(Зазвичай вказується при виводі пластини)");
+		spnPrintFild4.setModel(new SpinnerListModel(new String[] {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14",
+				"15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36",
+				"37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58",
+				"59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80",
+				"81", "82", "83", "84", "85", "86", "87", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100"}));
+		spnPrintFild4.setBounds(250, 255, 46, 20);
+		frame.getContentPane().add(spnPrintFild4);
+		
+		spnPrintFild5 = new JSpinner();
+		spnPrintFild5.setToolTipText("Відсоток задруківки на формі"
+				+ "(Зазвичай вказується при виводі пластини)");
+		spnPrintFild5.setModel(new SpinnerListModel(new String[] {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14",
+				"15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36",
+				"37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58",
+				"59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80",
+				"81", "82", "83", "84", "85", "86", "87", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100"}));
+		spnPrintFild5.setBounds(250, 286, 46, 20);
+		frame.getContentPane().add(spnPrintFild5);
+		
+		spnPrintFild6 = new JSpinner();
+		spnPrintFild6.setToolTipText("Відсоток задруківки на формі"
+				+ "(Зазвичай вказується при виводі пластини)");
+		spnPrintFild6.setModel(new SpinnerListModel(new String[] {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14",
+				"15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36",
+				"37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58",
+				"59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80",
+				"81", "82", "83", "84", "85", "86", "87", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100"}));
+		spnPrintFild6.setBounds(250, 317, 46, 20);
+		frame.getContentPane().add(spnPrintFild6);
+		
+		spnPrintFild7 = new JSpinner();
+		spnPrintFild7.setToolTipText("Відсоток задруківки на формі"
+				+ "(Зазвичай вказується при виводі пластини)");
+		spnPrintFild7.setModel(new SpinnerListModel(new String[] {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14",
+				"15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36",
+				"37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58",
+				"59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80",
+				"81", "82", "83", "84", "85", "86", "87", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100"}));
+		spnPrintFild7.setBounds(250, 348, 46, 20);
+		frame.getContentPane().add(spnPrintFild7);
+		
+		spnPrintFild8 = new JSpinner();
+		spnPrintFild8.setToolTipText("Відсоток задруківки на формі"
+				+ "(Зазвичай вказується при виводі пластини)");
+		spnPrintFild8.setModel(new SpinnerListModel(new String[] {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14",
+				"15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36",
+				"37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58",
+				"59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80",
+				"81", "82", "83", "84", "85", "86", "87", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100"}));
+		spnPrintFild8.setBounds(250, 379, 46, 20);
+		frame.getContentPane().add(spnPrintFild8);
+		
+		
+		// spnInkLayer - це спінер що вказує накат фарби. Мін - 0,5 ---- Макс 2,5.
+		JSpinner spnInkLayer1 = new JSpinner();
+		spnInkLayer1.setToolTipText("\u0412\u0432\u0435\u0434\u0456\u0442\u044C \u043D\u0430\u043A\u0430\u0442 \u0444\u0430\u0440\u0431\u0438 \u0432\u0456\u0434 0.5 \u0433/\u043C\u00B2 \u0434\u043E 2.5 \u0433/\u043C\u00B2(\u0427\u0435\u0440\u0435\u0437 \u041A\u0440\u0430\u043F\u043A\u0443).\r\n");
+		spnInkLayer1.setModel(new SpinnerListModel(new String[] {"0.5", "0.6", "0.7",
+				"0.8", "0.9", "1.0", "1.1", "1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.8", "1.9", "2.0", "2.1", "2.2", "2.3", "2.4", "2.5"}));
+		spnInkLayer1.setBounds(150, 162, 45, 20);
+		frame.getContentPane().add(spnInkLayer1);
+		
+		JSpinner spnInkLayer2 = new JSpinner();
+		spnInkLayer2.setToolTipText("\u0412\u0432\u0435\u0434\u0456\u0442\u044C \u043D\u0430\u043A\u0430\u0442 \u0444\u0430\u0440\u0431\u0438 \u0432\u0456\u0434 0.5 \u0433/\u043C\u00B2 \u0434\u043E 2.5 \u0433/\u043C\u00B2\r\n(\u0427\u0435\u0440\u0435\u0437 \u041A\u0440\u0430\u043F\u043A\u0443).\r\n");
+		spnInkLayer2.setModel(new SpinnerListModel(new String[] {"0.5", "0.6", "0.7",
+				"0.8", "0.9", "1.0", "1.1", "1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.8", "1.9", "2.0", "2.1", "2.2", "2.3", "2.4", "2.5"}));
+		spnInkLayer2.setBounds(151, 193, 45, 20);
+		frame.getContentPane().add(spnInkLayer2);
+		
+		JSpinner spnInkLayer3 = new JSpinner();
+		spnInkLayer3.setToolTipText("\u0412\u0432\u0435\u0434\u0456\u0442\u044C \u043D\u0430\u043A\u0430\u0442 \u0444\u0430\u0440\u0431\u0438 \u0432\u0456\u0434 0.5 \u0433/\u043C\u00B2 \u0434\u043E 2.5 \u0433/\u043C\u00B2\r\n(\u0427\u0435\u0440\u0435\u0437 \u041A\u0440\u0430\u043F\u043A\u0443).\r\n");
+		spnInkLayer3.setModel(new SpinnerListModel(new String[] {"0.5", "0.6", "0.7",
+				"0.8", "0.9", "1.0", "1.1", "1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.8", "1.9", "2.0", "2.1", "2.2", "2.3", "2.4", "2.5"}));
+		spnInkLayer3.setBounds(151, 224, 45, 20);
+		frame.getContentPane().add(spnInkLayer3);
+		
+		JSpinner spnInkLayer4 = new JSpinner();
+		spnInkLayer4.setToolTipText("\u0412\u0432\u0435\u0434\u0456\u0442\u044C \u043D\u0430\u043A\u0430\u0442 \u0444\u0430\u0440\u0431\u0438 \u0432\u0456\u0434 0.5 \u0433/\u043C\u00B2 \u0434\u043E 2.5 \u0433/\u043C\u00B2\r\n(\u0427\u0435\u0440\u0435\u0437 \u041A\u0440\u0430\u043F\u043A\u0443).\r\n");
+		spnInkLayer4.setModel(new SpinnerListModel(new String[] {"0.5", "0.6", "0.7",
+				"0.8", "0.9", "1.0", "1.1", "1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.8", "1.9", "2.0", "2.1", "2.2", "2.3", "2.4", "2.5"}));
+		spnInkLayer4.setBounds(151, 255, 45, 20);
+		frame.getContentPane().add(spnInkLayer4);
+		
+		JSpinner spnInkLayer5 = new JSpinner();
+		spnInkLayer5.setToolTipText("\u0412\u0432\u0435\u0434\u0456\u0442\u044C \u043D\u0430\u043A\u0430\u0442 \u0444\u0430\u0440\u0431\u0438 \u0432\u0456\u0434 0.5 \u0433/\u043C\u00B2 \u0434\u043E 2.5 \u0433/\u043C\u00B2\r\n(\u0427\u0435\u0440\u0435\u0437 \u041A\u0440\u0430\u043F\u043A\u0443).\r\n");
+		spnInkLayer5.setModel(new SpinnerListModel(new String[] {"0.5", "0.6", "0.7",
+				"0.8", "0.9", "1.0", "1.1", "1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.8", "1.9", "2.0", "2.1", "2.2", "2.3", "2.4", "2.5"}));
+		spnInkLayer5.setBounds(151, 286, 45, 20);
+		frame.getContentPane().add(spnInkLayer5);
+		
+		JSpinner spnInkLayer6 = new JSpinner();
+		spnInkLayer6.setToolTipText("\u0412\u0432\u0435\u0434\u0456\u0442\u044C \u043D\u0430\u043A\u0430\u0442 \u0444\u0430\u0440\u0431\u0438 \u0432\u0456\u0434 0.5 \u0433/\u043C\u00B2 \u0434\u043E 2.5 \u0433/\u043C\u00B2\r\n(\u0427\u0435\u0440\u0435\u0437 \u041A\u0440\u0430\u043F\u043A\u0443).\r\n");
+		spnInkLayer6.setModel(new SpinnerListModel(new String[] {"0.5", "0.6", "0.7",
+				"0.8", "0.9", "1.0", "1.1", "1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.8", "1.9", "2.0", "2.1", "2.2", "2.3", "2.4", "2.5"}));
+		spnInkLayer6.setBounds(151, 317, 45, 20);
+		frame.getContentPane().add(spnInkLayer6);
+		
+		JSpinner spnInkLayer7 = new JSpinner();
+		spnInkLayer7.setToolTipText("\u0412\u0432\u0435\u0434\u0456\u0442\u044C \u043D\u0430\u043A\u0430\u0442 \u0444\u0430\u0440\u0431\u0438 \u0432\u0456\u0434 0.5 \u0433/\u043C\u00B2 \u0434\u043E 2.5 \u0433/\u043C\u00B2\r\n(\u0427\u0435\u0440\u0435\u0437 \u041A\u0440\u0430\u043F\u043A\u0443).\r\n");
+		spnInkLayer7.setModel(new SpinnerListModel(new String[] {"0.5", "0.6", "0.7",
+				"0.8", "0.9", "1.0", "1.1", "1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.8", "1.9", "2.0", "2.1", "2.2", "2.3", "2.4", "2.5"}));
+		spnInkLayer7.setBounds(151, 348, 45, 20);
+		frame.getContentPane().add(spnInkLayer7);
+		
+		spnInkLayer8 = new JSpinner();
+		spnInkLayer8.setToolTipText("\u0412\u0432\u0435\u0434\u0456\u0442\u044C \u043D\u0430\u043A\u0430\u0442 \u0444\u0430\u0440\u0431\u0438 \u0432\u0456\u0434 0.5 \u0433/\u043C\u00B2 \u0434\u043E 2.5 \u0433/\u043C\u00B2\r\n(\u0427\u0435\u0440\u0435\u0437 \u041A\u0440\u0430\u043F\u043A\u0443).\r\n");
+		spnInkLayer8.setModel(new SpinnerListModel(new String[] {"0.5", "0.6", "0.7",
+				"0.8", "0.9", "1.0", "1.1", "1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.8", "1.9", "2.0", "2.1", "2.2", "2.3", "2.4", "2.5"}));
+		spnInkLayer8.setBounds(151, 379, 45, 20);
+		frame.getContentPane().add(spnInkLayer8);
+		
+	
+		JLabel lblNewLabel_12 = new JLabel("%");
+		lblNewLabel_12.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_12.setBounds(301, 165, 18, 14);
+		frame.getContentPane().add(lblNewLabel_12);
+		
+		JLabel label = new JLabel("%");
+		label.setHorizontalAlignment(SwingConstants.LEFT);
+		label.setBounds(301, 193, 18, 14);
+		frame.getContentPane().add(label);
+		
+		JLabel label_1 = new JLabel("%");
+		label_1.setHorizontalAlignment(SwingConstants.LEFT);
+		label_1.setBounds(301, 227, 18, 14);
+		frame.getContentPane().add(label_1);
+		
+		JLabel label_2 = new JLabel("%");
+		label_2.setHorizontalAlignment(SwingConstants.LEFT);
+		label_2.setBounds(301, 258, 18, 14);
+		frame.getContentPane().add(label_2);
+		
+		JLabel label_3 = new JLabel("%");
+		label_3.setHorizontalAlignment(SwingConstants.LEFT);
+		label_3.setBounds(301, 289, 18, 14);
+		frame.getContentPane().add(label_3);
+		
+		JLabel label_4 = new JLabel("%");
+		label_4.setHorizontalAlignment(SwingConstants.LEFT);
+		label_4.setBounds(301, 320, 18, 14);
+		frame.getContentPane().add(label_4);
+		
+		JLabel label_5 = new JLabel("%");
+		label_5.setHorizontalAlignment(SwingConstants.LEFT);
+		label_5.setBounds(301, 351, 18, 14);
+		frame.getContentPane().add(label_5);
+		
+		JLabel label_6 = new JLabel("%");
+		label_6.setHorizontalAlignment(SwingConstants.LEFT);
+		label_6.setBounds(301, 382, 18, 14);
+		frame.getContentPane().add(label_6);
+		
+		JLabel lblNewLabel_13 = new JLabel("\u0433/\u043C\u00B2");
+		lblNewLabel_13.setHorizontalAlignment(SwingConstants.LEFT);
+		lblNewLabel_13.setBounds(200, 165, 25, 14);
+		frame.getContentPane().add(lblNewLabel_13);
+		
+		JLabel label_7 = new JLabel("\u0433/\u043C\u00B2");
+		label_7.setHorizontalAlignment(SwingConstants.LEFT);
+		label_7.setBounds(200, 196, 25, 14);
+		frame.getContentPane().add(label_7);
+		
+		JLabel label_8 = new JLabel("\u0433/\u043C\u00B2");
+		label_8.setHorizontalAlignment(SwingConstants.LEFT);
+		label_8.setBounds(200, 227, 25, 14);
+		frame.getContentPane().add(label_8);
+		
+		JLabel label_9 = new JLabel("\u0433/\u043C\u00B2");
+		label_9.setHorizontalAlignment(SwingConstants.LEFT);
+		label_9.setBounds(200, 258, 25, 14);
+		frame.getContentPane().add(label_9);
+		
+		JLabel label_10 = new JLabel("\u0433/\u043C\u00B2");
+		label_10.setHorizontalAlignment(SwingConstants.LEFT);
+		label_10.setBounds(200, 289, 25, 14);
+		frame.getContentPane().add(label_10);
+		
+		JLabel label_11 = new JLabel("\u0433/\u043C\u00B2");
+		label_11.setHorizontalAlignment(SwingConstants.LEFT);
+		label_11.setBounds(200, 320, 25, 14);
+		frame.getContentPane().add(label_11);
+		
+		JLabel label_12 = new JLabel("\u0433/\u043C\u00B2");
+		label_12.setHorizontalAlignment(SwingConstants.LEFT);
+		label_12.setBounds(200, 351, 25, 14);
+		frame.getContentPane().add(label_12);
+		
+		JLabel label_13 = new JLabel("\u0433/\u043C\u00B2");
+		label_13.setHorizontalAlignment(SwingConstants.LEFT);
+		label_13.setBounds(200, 382, 25, 14);
+		frame.getContentPane().add(label_13);
+		
+		
+		JButton btnRozrakhuvaty = new JButton("\u0420\u043E\u0437\u0440\u0430\u0445\u0443\u0432\u0430\u0442\u0438");
+		btnRozrakhuvaty.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String Len = txtLength.getText();
+				double length = Double.parseDouble(Len);
+				
+				String Wid = txtWidth.getText();
+				double width = Double.parseDouble(Wid);
+				
+				String Nak = txtNaklad.getText();
+				double naklad = Double.parseDouble(Nak);
+				
+				double area = (length*width)/1000000;
+				
+//				String name1 = txtColor1.getText();
+//				
+//				String name2 = txtColor2.getText();
+//				
+//				String name3 = txtColor3.getText();
+//				
+//				String name4 = txtColor4.getText();
+//				
+//				String name5 = txtColor5.getText();
+//				
+//				String name6 = txtColor6.getText();
+//				
+//				String name7 = txtColor7.getText();
+//				
+//				String name8 = txtColor8.getText();
+				
+				String LY1 = (String)spnInkLayer1.getValue();
+				double InkLayer1 = Double.parseDouble(LY1);
+				
+				String LY2 = (String)spnInkLayer2.getValue();
+				double InkLayer2 = Double.parseDouble(LY2);
+				
+				String LY3 = (String)spnInkLayer3.getValue();
+				double InkLayer3 = Double.parseDouble(LY3);
+				
+				String LY4 = (String)spnInkLayer4.getValue();
+				double InkLayer4 = Double.parseDouble(LY4);
+				
+				String LY5 = (String)spnInkLayer5.getValue();
+				double InkLayer5 = Double.parseDouble(LY5);
+				
+				String LY6 = (String)spnInkLayer6.getValue();
+				double InkLayer6 = Double.parseDouble(LY6);
+				
+				String LY7 = (String)spnInkLayer7.getValue();
+				double InkLayer7 = Double.parseDouble(LY7);
+				
+				String LY8 = (String)spnInkLayer8.getValue();
+				double InkLayer8 = Double.parseDouble(LY8);
+				
+				String PF1 = (String)spnPrintFild1.getValue();
+				int printFild1 = Integer.parseInt(PF1);
+				
+				String PF2 = (String)spnPrintFild2.getValue();
+				int printFild2 = Integer.parseInt(PF2);
+				
+				String PF3 = (String)spnPrintFild3.getValue();
+				int printFild3 = Integer.parseInt(PF3);
+				
+				String PF4 = (String)spnPrintFild4.getValue();
+				int printFild4 = Integer.parseInt(PF4);
+				
+				String PF5 = (String)spnPrintFild5.getValue();
+				int printFild5 = Integer.parseInt(PF5);
+				
+				String PF6 = (String)spnPrintFild6.getValue();
+				int printFild6 = Integer.parseInt(PF6);
+				
+				String PF7 = (String)spnPrintFild7.getValue();
+				int printFild7 = Integer.parseInt(PF7);
+				
+				String PF8 = (String)spnPrintFild8.getValue();
+				int printFild8 = Integer.parseInt(PF8);
+				
+				
+				double kilkistFarby1 = (((((area*InkLayer1)*printFild1)/100)*naklad)*1.2)/1000;
+				txtInkVolume1.setText(df.format(kilkistFarby1)+" кг");
+				
+				double kilkistFarby2 = (((((area*InkLayer2)*printFild2)/100)*naklad)*1.2)/1000;
+				txtInkVolume2.setText(df.format(kilkistFarby2)+" кг");
+				
+				
+				double kilkistFarby3 = (((((area*InkLayer3)*printFild3)/100)*naklad)*1.2)/1000;
+				txtInkVolume3.setText(df.format(kilkistFarby3)+" кг");
+				
+				double kilkistFarby4 = (((((area*InkLayer4)*printFild4)/100)*naklad)*1.2)/1000;
+				txtInkVolume4.setText(df.format(kilkistFarby4)+" кг");
+				
+				double kilkistFarby5 = (((((area*InkLayer5)*printFild5)/100)*naklad)*1.2)/1000;
+				txtInkVolume5.setText(df.format(kilkistFarby5)+" кг");
+				
+				double kilkistFarby6 = (((((area*InkLayer6)*printFild6)/100)*naklad)*1.2)/1000;
+				txtInkVolume6.setText(df.format(kilkistFarby6)+" кг");
+				
+				double kilkistFarby7 = (((((area*InkLayer7)*printFild7)/100)*naklad)*1.2)/1000;
+				txtInkVolume7.setText(df.format(kilkistFarby7)+" кг");
+				
+				double kilkistFarby8 = (((((area*InkLayer8)*printFild8)/100)*naklad)*1.2)/1000;
+				txtInkVolume8.setText(df.format(kilkistFarby8)+" кг");
+				
+				//JOptionPane.showMessageDialog(null,"Програма розроблена для рекомендаційного ознайомлення. "
+						//+ "Вбираючі властивості матеріалу та наявність зволожуючого \n"
+						//+ "розчину на друкарській машині можуть впливати на різницю витрат фарби від лабораторних.");
+				
+			}
+		});
+		btnRozrakhuvaty.setBounds(151, 445, 181, 23);
+		frame.getContentPane().add(btnRozrakhuvaty);
+		
+		JLabel lblPrintSolution = new JLabel("");
+		ImageIcon img = new ImageIcon(this.getClass().getResource("/PrintSolutoin.png"));
+		lblPrintSolution.setIcon(img);
+		lblPrintSolution.setBounds(355, 445, 119, 60);
+		frame.getContentPane().add(lblPrintSolution);
+		
+		JLabel lblNewLabel_14 = new JLabel("soft by Borysevych Anton");
+		lblNewLabel_14.setFont(new Font("HelveticaNeueCyr", Font.PLAIN, 8));
+		lblNewLabel_14.setBounds(10, 491, 106, 14);
+		frame.getContentPane().add(lblNewLabel_14);
+	}
+}
